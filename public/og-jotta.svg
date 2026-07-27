@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f6f5"/>
+  <path d="M0 0h72v630H0z" fill="#005da0"/>
+  <path d="M1010 0h190v630h-190z" fill="#dceef9"/>
+  <path d="M1010 0h190v210h-190z" fill="#58a5d7"/>
+  <text x="128" y="110" fill="#005da0" font-family="monospace" font-size="22" letter-spacing="4">JOTTA · DESDE 1994</text>
+  <text x="128" y="250" fill="#13232e" font-family="Georgia, serif" font-size="70">Manutenção industrial</text>
+  <text x="128" y="335" fill="#13232e" font-family="Georgia, serif" font-size="70">com método, documentação</text>
+  <text x="128" y="420" fill="#13232e" font-family="Georgia, serif" font-size="70">e rastreabilidade.</text>
+  <text x="128" y="535" fill="#405564" font-family="Arial, sans-serif" font-size="24">DIAGNÓSTICO · EXECUÇÃO · TESTE · EVIDÊNCIA</text>
+</svg>

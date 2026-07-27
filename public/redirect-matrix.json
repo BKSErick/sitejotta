@@ -1,0 +1,40 @@
+{
+  "status": "draft-until-search-console-inventory",
+  "rules": [
+    {
+      "source": "/",
+      "target": "/",
+      "action": "preserve"
+    },
+    {
+      "source": "/quem-somos/",
+      "target": "/empresa/",
+      "action": "pending-301"
+    },
+    {
+      "source": "/atuacao/",
+      "target": "/solucoes/",
+      "action": "pending-301"
+    },
+    {
+      "source": "/assistencia/",
+      "target": "/assistencia/",
+      "action": "preserve"
+    },
+    {
+      "source": "/book-tecnico/",
+      "target": "/book-tecnico/",
+      "action": "preserve"
+    },
+    {
+      "source": "/contato/",
+      "target": "/contato/",
+      "action": "preserve"
+    },
+    {
+      "source": "/servicos/",
+      "target": "/solucoes/",
+      "action": "pending-301-after-404-review"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Jotta Manutenções",
+  "short_name": "Jotta",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6f5",
+  "theme_color": "#005da0",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
