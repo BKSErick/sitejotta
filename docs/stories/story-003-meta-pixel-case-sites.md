@@ -2,7 +2,7 @@
 
 ## Status
 
-In Progress
+Done
 
 ## Story
 
@@ -18,7 +18,7 @@ em follow-ups, sem poluir os eventos com minhas próprias visitas.
 - [x] `crm_track=1` remove a exclusão interna.
 - [x] Nenhum token Meta secreto é enviado ao navegador.
 - [x] Testes e quality gates aplicáveis passam.
-- [ ] GitHub e Vercel refletem os commits validados.
+- [x] GitHub e Vercel refletem os commits validados.
 
 ## File List
 
@@ -39,3 +39,7 @@ em follow-ups, sem poluir os eventos com minhas próprias visitas.
 - `npm.cmd test` — 21 testes aprovados
 - `npm.cmd run build` — 18 rotas e página 404 geradas
 - `npm.cmd run smoke:visual` — 18 rotas desktop e 18 mobile aprovadas
+- GitHub: implementação publicada em `519529e385ae8178b06a135d961432a5b5bb8760`
+- Vercel: status `success`; domínio público e bundle responderam HTTP 200
+- Produção: `crm_no_track=1` persistiu a exclusão, preservou UTM e gerou zero
+  requisições ao Meta Pixel nos dois sites
