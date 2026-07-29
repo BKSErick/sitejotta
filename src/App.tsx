@@ -1,3 +1,4 @@
+import { MetaTracking } from './components/MetaTracking';
 import { SiteFooter } from './components/SiteFooter';
 import { SiteHeader } from './components/SiteHeader';
 import { findRoute, findSolution } from './data/site-content';
@@ -44,6 +45,7 @@ export default function App({ initialPath }: AppProps) {
       <SiteHeader />
       <main id="conteudo">{page}</main>
       <SiteFooter />
+      <MetaTracking />
     </>
   );
 }

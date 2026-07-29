@@ -289,8 +289,15 @@ function LegalContent({ kind }: { kind: 'privacy' | 'cookies' }) {
             </p>
             <h2>Medição e preferências</h2>
             <p>
-              Recursos opcionais de análise somente devem ser ativados conforme a
-              escolha do visitante e a configuração homologada do site.
+              O Meta Pixel pode registrar visualizações para medição e remarketing
+              somente depois que o visitante aceitar a medição opcional. A escolha
+              fica armazenada neste navegador.
+            </p>
+            <h2>Visitas internas</h2>
+            <p>
+              A equipe pode abrir o site com <code>?crm_no_track=1</code> para
+              bloquear a medição neste navegador. O controle pode ser removido com{' '}
+              <code>?crm_track=1</code>.
             </p>
           </>
         )}
