@@ -1,7 +1,13 @@
+import type { CSSProperties } from 'react';
+
 import { ArrowLink } from '../components/ArrowLink';
+import { BrandShowcase } from '../components/BrandShowcase';
+import { BrandStrip } from '../components/BrandStrip';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { PageHero } from '../components/PageHero';
+import { PageConversion } from '../components/PageConversion';
 import { SectionHeading } from '../components/SectionHeading';
+import { VideoRecords } from '../components/VideoRecords';
 import type { PublicRoute } from '../data/site-content';
 
 const methodSteps = [
@@ -17,7 +23,7 @@ const methodSteps = [
 function CompanyContent() {
   return (
     <>
-      <section className="section">
+      <section className="section section--company-story">
         <div className="container split-editorial">
           <SectionHeading
             index="01"
@@ -38,17 +44,17 @@ function CompanyContent() {
       </section>
       <section className="section section--photo">
         <div className="container photo-panel photo-panel--reverse">
-          <figure>
+          <figure data-reveal="right">
             <img
-              src="/media/jotta-oficina.jpg"
-              alt="Área interna da oficina da Jotta com equipamentos organizados para manutenção"
+              src="/media/frames/bancada-ferramenta.jpg"
+              alt="Técnico da Jotta trabalhando em bancada com ferramenta hidráulica"
               width="1600"
-              height="1067"
+              height="900"
               loading="lazy"
             />
-            <figcaption>Oficina e estrutura operacional Jotta Manutenções</figcaption>
+            <figcaption>Bancada técnica · Jotta Manutenções</figcaption>
           </figure>
-          <div>
+          <div data-reveal="left">
             <span className="eyebrow">COMPROMISSOS TÉCNICOS</span>
             <h2>Diagnosticar antes de prometer. Registrar antes de encerrar.</h2>
             <p>
@@ -67,36 +73,54 @@ function AssistanceContent() {
     ['Peças e procedimentos', 'A aplicação considera o equipamento, o fabricante e o escopo aprovado.'],
     ['Laudo', 'O documento registra condições verificadas após a manutenção e os testes.'],
     ['ART', 'Pode ser emitida quando solicitada, aplicável e prevista no escopo.'],
-    ['Garantia', 'As condições dependem do serviço, das peças e dos limites formalizados.'],
+    ['Garantia de 90 dias', 'O serviço executado é coberto por 90 dias, nas condições formalizadas no laudo.'],
     ['Rastreabilidade', 'A identificação física conecta o equipamento ao registro de manutenção.'],
   ];
 
   return (
-    <section className="section">
-      <div className="container">
-        <SectionHeading
-          index="01"
-          eyebrow="CADEIA DE EVIDÊNCIAS"
-          title="A assistência precisa ser comprovável, não apenas declarada."
-          body="A relação final de marcas será publicada somente depois da confirmação de vínculos e documentos vigentes."
-        />
-        <div className="evidence-grid">
-          {items.map(([title, text], index) => (
-            <article key={title}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <h2>{title}</h2>
-              <p>{text}</p>
-            </article>
-          ))}
+    <>
+      <BrandShowcase />
+      <section className="section section--assistance-brands">
+        <div className="container">
+          <SectionHeading
+            index="01"
+            eyebrow="REDE AUTORIZADA"
+            title="Quinze fabricantes autorizam a Jotta a dar manutenção nos equipamentos deles."
+            body="Autorização de fábrica significa peça original, procedimento do fabricante e garantia que o próprio fabricante reconhece."
+          />
+          <BrandStrip variant="grid" />
         </div>
-      </div>
-    </section>
+      </section>
+      <section className="section section--assistance-story">
+        <div className="container">
+          <SectionHeading
+            index="02"
+            eyebrow="CADEIA DE EVIDÊNCIAS"
+            title="A assistência precisa ser comprovável, não apenas declarada."
+            body="O que a Jotta entrega junto com o equipamento reparado."
+          />
+          <div className="evidence-grid">
+            {items.map(([title, text], index) => (
+              <article
+                key={title}
+                data-reveal="up"
+                style={{ '--reveal-delay': `${index * 70}ms` } as CSSProperties}
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h2>{title}</h2>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
 function MethodContent() {
   return (
-    <section className="section">
+    <section className="section section--method-story">
       <div className="container">
         <SectionHeading
           index="01"
@@ -105,7 +129,11 @@ function MethodContent() {
         />
         <ol className="method-detail">
           {methodSteps.map(([title, output], index) => (
-            <li key={title}>
+            <li
+              key={title}
+              data-reveal="up"
+              style={{ '--reveal-delay': `${index * 65}ms` } as CSSProperties}
+            >
               <span>{String(index + 1).padStart(2, '0')}</span>
               <h2>{title}</h2>
               <p>{output}</p>
@@ -119,7 +147,7 @@ function MethodContent() {
 
 function CasesContent() {
   return (
-    <section className="section">
+    <section className="section section--cases-story">
       <div className="container empty-editorial">
         <span className="technical-code">ARQUIVO EM CURADORIA</span>
         <h2>Os cases estão em processo de autorização editorial.</h2>
@@ -150,17 +178,33 @@ function ContentContent() {
   ];
 
   return (
-    <section className="section">
+    <>
+      <section className="section section--content-videos">
+        <div className="container">
+          <SectionHeading
+            index="01"
+            eyebrow="REGISTROS EM VÍDEO"
+            title="A operação mostrada por dentro, sem intermediário."
+            body="Estrutura, processo e parcerias registrados na própria oficina."
+          />
+          <VideoRecords />
+        </div>
+      </section>
+      <section className="section section--content-story">
       <div className="container">
         <SectionHeading
-          index="01"
+          index="02"
           eyebrow="LINHAS EDITORIAIS"
           title="Conhecimento técnico organizado para apoiar decisões."
           body="O arquivo editorial será migrado com autoria, data, revisão e relação clara com as soluções da Jotta."
         />
         <div className="topic-grid">
           {topics.map((topic, index) => (
-            <article key={topic}>
+            <article
+              key={topic}
+              data-reveal="up"
+              style={{ '--reveal-delay': `${index * 70}ms` } as CSSProperties}
+            >
               <span>{String(index + 1).padStart(2, '0')}</span>
               <h2>{topic}</h2>
               <p>Conteúdo em organização editorial para publicação.</p>
@@ -168,13 +212,14 @@ function ContentContent() {
           ))}
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
 
 function BookContent() {
   return (
-    <section className="section">
+    <section className="section section--book-story">
       <div className="container book-layout">
         <div className="book-cover" aria-hidden="true">
           <span>JOTTA</span>
@@ -255,6 +300,8 @@ function LegalContent({ kind }: { kind: 'privacy' | 'cookies' }) {
 }
 
 export function InstitutionalPage({ route }: { route: PublicRoute }) {
+  const showConversion = route.kind !== 'legal';
+
   return (
     <>
       <Breadcrumbs current={route.label} />
@@ -268,6 +315,7 @@ export function InstitutionalPage({ route }: { route: PublicRoute }) {
       {route.kind === 'legal' && (
         <LegalContent kind={route.path === '/privacidade/' ? 'privacy' : 'cookies'} />
       )}
+      {showConversion && <PageConversion />}
     </>
   );
 }

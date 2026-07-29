@@ -1,5 +1,6 @@
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { PageHero } from '../components/PageHero';
+import { PageConversion } from '../components/PageConversion';
 import { SectionHeading } from '../components/SectionHeading';
 import { SolutionGrid } from '../components/SolutionGrid';
 import type { PublicRoute } from '../data/site-content';
@@ -20,6 +21,10 @@ export function SolutionsPage({ route }: { route: PublicRoute }) {
           <SolutionGrid />
         </div>
       </section>
+      <PageConversion
+        heading="Não sabe em qual disciplina a demanda entra?"
+        body="Informe o tipo de equipamento e seus dados de contato. A equipe continua a conversa com você."
+      />
     </>
   );
 }

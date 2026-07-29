@@ -47,9 +47,9 @@ export const solutions: Solution[] = [
     number: '01',
     shortName: 'Talhas elétricas',
     eyebrow: 'ELEVAÇÃO E MOVIMENTAÇÃO',
-    heading: 'Manutenção de talhas elétricas com controle técnico em cada etapa.',
+    heading: 'Antes de elevar a carga, reduza a incerteza sobre o equipamento.',
     introduction:
-      'Diagnóstico, intervenção, testes e documentação para equipamentos aplicados à elevação e movimentação de cargas.',
+      'Freio, corrente, comando e segurança fazem parte do mesmo sistema. A avaliação precisa enxergar o conjunto antes da intervenção.',
     context:
       'Freios, cabos ou correntes, comandos, motores e dispositivos de segurança precisam ser avaliados como partes de um mesmo sistema.',
     applications: ['Talhas de cabo de aço', 'Talhas de corrente', 'Trole elétrico', 'Comandos e acessórios'],
@@ -66,9 +66,9 @@ export const solutions: Solution[] = [
     number: '02',
     shortName: 'Lavadoras industriais',
     eyebrow: 'LIMPEZA INDUSTRIAL',
-    heading: 'Manutenção de lavadoras para recuperar desempenho e previsibilidade de uso.',
+    heading: 'Recupere pressão, vazão e previsibilidade de uso.',
     introduction:
-      'Atendimento técnico a equipamentos de limpeza utilizados em oficinas, plantas e rotinas de manutenção.',
+      'A triagem conecta o sintoma à bomba, ao acionamento e aos componentes antes de definir o serviço.',
     context:
       'Vazão, pressão, acionamento e condição dos componentes precisam ser avaliados em conjunto antes da liberação do equipamento.',
     applications: ['Lavadoras de alta pressão', 'Lavadoras de piso', 'Bombas e acessórios', 'Sistemas de acionamento'],
@@ -85,9 +85,9 @@ export const solutions: Solution[] = [
     number: '03',
     shortName: 'Ferrovia',
     eyebrow: 'VIA PERMANENTE',
-    heading: 'Manutenção de equipamentos ferroviários para rotinas que exigem disponibilidade em campo.',
+    heading: 'Equipamento de via parado não espera uma resposta genérica.',
     introduction:
-      'Atendimento a equipamentos de via permanente, incluindo tirefonadeiras, furadeiras de dormente e equipamentos de socaria.',
+      'A avaliação considera esforço, impacto, aplicação e condição de entrada para orientar a intervenção.',
     context:
       'Equipamentos ferroviários trabalham sob esforço, impacto e condições severas. A avaliação considera a aplicação e a condição de entrada.',
     applications: ['Tirefonadeiras', 'Furadeiras de dormente', 'Socadores', 'Ferramentas de via permanente'],
@@ -104,9 +104,9 @@ export const solutions: Solution[] = [
     number: '04',
     shortName: 'Mecânica industrial',
     eyebrow: 'MECÂNICA',
-    heading: 'Manutenção mecânica orientada pela condição real do equipamento.',
+    heading: 'Trocar peça sem entender a falha só adia a próxima parada.',
     introduction:
-      'Atendimento a equipamentos e ferramentas mecânicas utilizados na operação e na manutenção industrial.',
+      'Folga, desgaste e desalinhamento são sinais. O diagnóstico organiza o que precisa ser recuperado, substituído e verificado.',
     context:
       'Folga, desgaste, desalinhamento e falha de componentes exigem diagnóstico antes da substituição ou recuperação.',
     applications: ['Redutores', 'Ferramentas mecânicas', 'Conjuntos rotativos', 'Dispositivos industriais'],
@@ -123,9 +123,9 @@ export const solutions: Solution[] = [
     number: '05',
     shortName: 'Hidráulica industrial',
     eyebrow: 'HIDRÁULICA',
-    heading: 'Manutenção de conjuntos hidráulicos com diagnóstico, teste e registro.',
+    heading: 'Vazamento é sintoma. O diagnóstico precisa enxergar o conjunto.',
     introduction:
-      'Atendimento a cilindros, bombas, prensas e outros equipamentos hidráulicos utilizados em aplicações industriais.',
+      'Cilindros, bombas, prensas e unidades hidráulicas exigem leitura de pressão, força, movimento e condição dos componentes.',
     context:
       'Perda de força, vazamento e instabilidade podem ter causas diferentes. A intervenção começa pela compreensão do conjunto.',
     applications: ['Cilindros', 'Bombas hidráulicas', 'Prensas', 'Unidades e conjuntos hidráulicos'],
@@ -142,9 +142,9 @@ export const solutions: Solution[] = [
     number: '06',
     shortName: 'Pneumática industrial',
     eyebrow: 'PNEUMÁTICA',
-    heading: 'Manutenção pneumática para equipamentos que dependem de resposta consistente.',
+    heading: 'Resposta irregular pede diagnóstico além da linha de ar.',
     introduction:
-      'Atendimento a compressores, bombas propulsoras, chaves de impacto, cilindros e outros equipamentos pneumáticos.',
+      'Vazamento, pressão e acionamento precisam ser avaliados em conjunto para recuperar uma resposta operacional consistente.',
     context:
       'Queda de desempenho, vazamento e funcionamento irregular precisam ser analisados além do sintoma aparente.',
     applications: ['Compressores', 'Chaves de impacto', 'Cilindros pneumáticos', 'Bombas propulsoras'],
@@ -161,9 +161,9 @@ export const solutions: Solution[] = [
     number: '07',
     shortName: 'Elétrica industrial',
     eyebrow: 'ELÉTRICA',
-    heading: 'Manutenção elétrica com verificação funcional e documentação do serviço.',
+    heading: 'Desarme recorrente não se resolve com tentativa e erro.',
     introduction:
-      'Atendimento a geradores, painéis, ferramentas elétricas, máquinas de solda, paleteiras e outros equipamentos industriais.',
+      'Alimentação, comando, proteção e componentes entram na mesma leitura antes da intervenção e da verificação funcional.',
     context:
       'Falhas elétricas podem envolver alimentação, comando, proteção e componentes. A avaliação considera o equipamento como sistema.',
     applications: ['Geradores', 'Painéis e comandos', 'Máquinas de solda', 'Ferramentas elétricas'],
@@ -197,9 +197,9 @@ const coreRoutes: PublicRoute[] = [
     kind: 'company',
     label: 'Empresa',
     eyebrow: 'JOTTA MANUTENÇÕES · DESDE 1994',
-    heading: 'Experiência construída onde manutenção precisa virar disponibilidade.',
+    heading: 'Três décadas devolvendo equipamentos à operação — com informação junto.',
     introduction:
-      'Uma trajetória ligada à indústria, à recuperação de equipamentos e à responsabilidade de devolver cada ativo com informação.',
+      'Desde 1994, a Jotta transforma experiência de oficina em diagnóstico, execução controlada e registros que ajudam o cliente a decidir.',
     meta: {
       title: 'Empresa | Jotta Manutenções desde 1994',
       description:
@@ -211,9 +211,9 @@ const coreRoutes: PublicRoute[] = [
     kind: 'solutions',
     label: 'Soluções',
     eyebrow: 'SETE FRENTES · UMA LÓGICA DE EXECUÇÃO',
-    heading: 'Capacidade multidisciplinar para diferentes equipamentos e contextos.',
+    heading: 'Sete frentes técnicas. Um único padrão de controle.',
     introduction:
-      'Identifique a disciplina mais próxima da sua necessidade e envie o contexto do equipamento para uma triagem técnica.',
+      'Do equipamento de elevação ao conjunto hidráulico, a disciplina muda. A lógica permanece: entender, intervir, testar e registrar.',
     meta: {
       title: 'Soluções em Manutenção Industrial | Jotta Manutenções',
       description:
@@ -225,9 +225,9 @@ const coreRoutes: PublicRoute[] = [
     kind: 'assistance',
     label: 'Assistência Técnica',
     eyebrow: 'ASSISTÊNCIA TÉCNICA',
-    heading: 'Procedimento correto, peça correta e evidência do que foi executado.',
+    heading: 'A peça certa resolve a falha. A evidência certa reduz a próxima dúvida.',
     introduction:
-      'A assistência técnica aproxima o serviço dos requisitos de cada fabricante e organiza a documentação necessária para o cliente.',
+      'A Jotta conecta aplicação, procedimento, teste e documentação para que o cliente saiba o que entrou, o que foi feito e o que está sendo entregue.',
     meta: {
       title: 'Assistência Técnica Industrial | Jotta Manutenções',
       description:
@@ -239,9 +239,9 @@ const coreRoutes: PublicRoute[] = [
     kind: 'method',
     label: 'Método Jotta',
     eyebrow: 'MÉTODO JOTTA · 07 ETAPAS',
-    heading: 'Do chamado à entrega, cada etapa precisa deixar evidência.',
+    heading: 'Cada etapa fecha uma incerteza antes da entrega.',
     introduction:
-      'Um fluxo para organizar decisões, responsabilidades e documentos durante a manutenção de equipamentos industriais.',
+      'Da solicitação ao registro final, o Método Jotta organiza decisões, responsabilidades e evidências em sete movimentos.',
     meta: {
       title: 'Método de Manutenção Industrial | Jotta Manutenções',
       description:
@@ -253,9 +253,9 @@ const coreRoutes: PublicRoute[] = [
     kind: 'cases',
     label: 'Cases',
     eyebrow: 'CASES TÉCNICOS',
-    heading: 'Evidências organizadas para quem precisa avaliar capacidade.',
+    heading: 'Capacidade não se declara. Se demonstra.',
     introduction:
-      'Os registros públicos seguem uma estrutura de contexto, diagnóstico, intervenção, testes e documentação autorizada.',
+      'Os cases serão publicados somente quando contexto, intervenção, teste e documentação puderem ser apresentados com autorização.',
     meta: {
       title: 'Cases de Manutenção Industrial | Jotta Manutenções',
       description:
@@ -267,9 +267,9 @@ const coreRoutes: PublicRoute[] = [
     kind: 'content',
     label: 'Conteúdo',
     eyebrow: 'CONTEÚDO TÉCNICO',
-    heading: 'Informação para quem decide sobre manutenção, disponibilidade e risco.',
+    heading: 'Quem decide manutenção precisa de critério, não de conteúdo genérico.',
     introduction:
-      'Artigos e registros revisados para apoiar decisões técnicas e comerciais relacionadas a equipamentos industriais.',
+      'Conteúdo revisado para transformar sintomas, processo e documentação em decisões técnicas mais bem informadas.',
     meta: {
       title: 'Conteúdo Técnico | Jotta Manutenções',
       description:
@@ -281,9 +281,9 @@ const coreRoutes: PublicRoute[] = [
     kind: 'book',
     label: 'Book Técnico',
     eyebrow: 'BOOK TÉCNICO',
-    heading: 'Um panorama da estrutura, das capacidades e do método da Jotta.',
+    heading: 'Avalie a capacidade da Jotta antes de colocar um ativo na bancada.',
     introduction:
-      'Consulte o material consolidado para processos de homologação, apresentação interna e avaliação de capacidade.',
+      'Estrutura, disciplinas, processo e documentação reunidos em um material para homologação e avaliação técnica.',
     meta: {
       title: 'Book Técnico | Jotta Manutenções',
       description:
@@ -295,13 +295,13 @@ const coreRoutes: PublicRoute[] = [
     kind: 'contact',
     label: 'Solicitação técnica',
     eyebrow: 'SOLICITAÇÃO TÉCNICA',
-    heading: 'Quanto melhor o contexto, mais precisa pode ser a triagem.',
+    heading: 'Descreva o equipamento. A triagem começa com contexto, não com chute.',
     introduction:
-      'Informe a empresa, o equipamento e a condição atual para que a equipe possa definir o próximo contato.',
+      'Um formulário, todos os dados essenciais e nenhum passo escondido. A equipe recebe o contexto necessário para definir o próximo contato.',
     meta: {
       title: 'Solicitar Avaliação Técnica | Jotta Manutenções',
       description:
-        'Descreva sua empresa, equipamento e condição operacional para iniciar uma triagem técnica com a equipe da Jotta.',
+        'Informe nome, telefone, empresa e tipo de equipamento para iniciar um contato técnico com a equipe da Jotta.',
     },
   },
   {
@@ -331,6 +331,173 @@ const coreRoutes: PublicRoute[] = [
       description:
         'Veja como o site da Jotta utiliza recursos essenciais e como as preferências de cookies e medição podem ser administradas.',
     },
+  },
+];
+
+export interface AuthorizedBrand {
+  name: string;
+  file: string;
+  scope: string;
+}
+
+/**
+ * Assistências técnicas autorizadas. Cada marca é prova verificável de terceiro —
+ * não incluir nenhuma sem autorização vigente confirmada pela Jotta.
+ */
+export const authorizedBrands: AuthorizedBrand[] = [
+  { name: 'Bosch', file: 'bosch.png', scope: 'Ferramentas elétricas' },
+  { name: 'Makita', file: 'makita.png', scope: 'Ferramentas elétricas' },
+  { name: 'DeWalt', file: 'dewalt.png', scope: 'Ferramentas elétricas' },
+  { name: 'Milwaukee', file: 'milwaukee.png', scope: 'Ferramentas elétricas' },
+  { name: 'Kärcher', file: 'karcher.png', scope: 'Lavadoras industriais' },
+  { name: 'Ingersoll Rand', file: 'ingersoll.png', scope: 'Pneumática e elevação' },
+  { name: 'Kito', file: 'kito.png', scope: 'Talhas e elevação' },
+  { name: 'Cattini', file: 'cattini.png', scope: 'Talhas e elevação' },
+  { name: 'Berg', file: 'berg.png', scope: 'Talhas e elevação' },
+  { name: 'Paletrans', file: 'paletrans.png', scope: 'Movimentação de carga' },
+  { name: 'Bovenau', file: 'bovenau.png', scope: 'Movimentação de carga' },
+  { name: 'Puma', file: 'puma.png', scope: 'Compressores' },
+  { name: 'Bozza', file: 'bozza.png', scope: 'Compressores' },
+  { name: 'Branco', file: 'branco.png', scope: 'Motores e geradores' },
+  { name: 'Marcon', file: 'marcon.png', scope: 'Equipamentos industriais' },
+];
+
+export interface ShowcaseBrand {
+  name: string;
+  logo: string;
+  /** Linha de produto atendida. */
+  line: string;
+  claim: string;
+  /** Fundo da marca. A ordem da lista alterna matiz para a troca ficar perceptível. */
+  color: string;
+  /** Cor do texto sobre o fundo da marca. */
+  ink: 'light' | 'dark';
+  /** Slug do vídeo em /media/marcas/{video}.mp4 + poster .jpg */
+  video: string;
+  /** Movimento que o clipe mostra — vira o rótulo sob o vídeo. */
+  motionLabel: string;
+  specs: [string, string][];
+}
+
+/** A ordem alterna matiz de propósito: em sequência, duas marcas de cor próxima
+ *  fazem a troca de fundo passar despercebida. */
+export const showcaseBrands: ShowcaseBrand[] = [
+  {
+    name: 'Cattini',
+    logo: 'cattini.png',
+    line: 'Macacos série MAMMUT',
+    claim: 'Elevação hidráulica de alta capacidade. O cilindro é testado sob carga antes da liberação.',
+    color: '#f2b705',
+    ink: 'dark',
+    video: 'cattini',
+    motionLabel: 'CURSO DO CILINDRO',
+    specs: [
+      ['LINHA', 'MAMMUT'],
+      ['SISTEMA', 'Hidráulico'],
+      ['ESCOPO', 'Cilindro, vedação e teste'],
+    ],
+  },
+  {
+    name: 'Bovenau',
+    logo: 'bovenau.png',
+    line: 'Empilhadeiras e movimentação',
+    claim: 'Elevação, mastro e acionamento são avaliados em conjunto antes de liberar a carga.',
+    color: '#1b4f8a',
+    ink: 'light',
+    video: 'bovenau',
+    motionLabel: 'ELEVAÇÃO DO MASTRO',
+    specs: [
+      ['LINHA', 'Movimentação'],
+      ['SISTEMA', 'Elétrico-hidráulico'],
+      ['ESCOPO', 'Mastro, comando e teste'],
+    ],
+  },
+  {
+    name: 'Kärcher',
+    logo: 'karcher.png',
+    line: 'Extratoras e lavadoras',
+    claim: 'Bomba, pressão e acionamento são verificados juntos — o sintoma raramente está na mangueira.',
+    color: '#ffed00',
+    ink: 'dark',
+    video: 'karcher',
+    motionLabel: 'CIRCUITO DE SUCÇÃO',
+    specs: [
+      ['LINHA', 'Industrial'],
+      ['SISTEMA', 'Alta pressão'],
+      ['ESCOPO', 'Bomba, vedação e pressão'],
+    ],
+  },
+  {
+    name: 'Makita',
+    logo: 'makita.png',
+    line: 'Ferramentas elétricas',
+    claim: 'Motor, escova, rolamento e acionamento entram na mesma leitura antes da intervenção.',
+    color: '#007681',
+    ink: 'light',
+    video: 'makita',
+    motionLabel: 'ACIONAMENTO DO MANDRIL',
+    specs: [
+      ['LINHA', 'Profissional'],
+      ['SISTEMA', 'Elétrico'],
+      ['ESCOPO', 'Motor, escova e mandril'],
+    ],
+  },
+];
+
+export interface VideoRecord {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  /** 16/9 nos institucionais, 9/16 nos clipes verticais. */
+  ratio: '16/9' | '9/16';
+}
+
+/**
+ * Registros em vídeo do canal da Jotta. Entram como facade do YouTube: o embed
+ * real só é injetado no clique, então nenhuma página paga o custo do player
+ * nem grava cookie de terceiro em quem não assistiu.
+ *
+ * Fora desta lista: "Capacidade que surpreende", que é b-roll sem locução e
+ * virou o loop do herói e os stills das páginas.
+ */
+export const videoRecords: VideoRecord[] = [
+  {
+    id: 'FbFb9d2CqxI',
+    title: 'Compromisso e capacidade',
+    description:
+      'Apresentação institucional: trajetória, frentes de atuação, rede autorizada e estrutura.',
+    duration: '2:38',
+    ratio: '16/9',
+  },
+  {
+    id: 'YHC0VrAqHoo',
+    title: 'Assistência autorizada Milwaukee',
+    description:
+      'A parceria com a Milwaukee e o alcance do atendimento na região metropolitana de Belo Horizonte.',
+    duration: '0:35',
+    ratio: '16/9',
+  },
+  {
+    id: 'KdiIpVvG9-c',
+    title: 'Estrutura preparada',
+    description: 'Percurso pela oficina mostrando como os processos ficam organizados.',
+    duration: '0:29',
+    ratio: '9/16',
+  },
+  {
+    id: 'wJ6IFrumids',
+    title: 'Indústria de manutenção',
+    description: 'Como a operação da Jotta se organiza para atender demanda industrial.',
+    duration: '1:03',
+    ratio: '9/16',
+  },
+  {
+    id: 'vqsPWl8DwgM',
+    title: 'Teste de bomba elétrica',
+    description: 'Verificação funcional registrada antes da liberação do equipamento.',
+    duration: '0:32',
+    ratio: '9/16',
   },
 ];
 

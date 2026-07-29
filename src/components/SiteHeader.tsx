@@ -19,7 +19,8 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="site-header__inner">
         <a className="site-header__brand" href="/" aria-label="Jotta Manutenções — início">
-          <BrandMark />
+          <BrandMark inverted />
+          <span>MANUTENÇÃO INDUSTRIAL · DESDE 1994</span>
         </a>
         <button
           className="menu-toggle"

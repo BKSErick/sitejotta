@@ -17,6 +17,26 @@ describe('Jotta site experience', () => {
       screen.getAllByRole('link', { name: /solicitar avaliação técnica/i }).length
     ).toBeGreaterThan(0);
     expect(screen.getByRole('navigation', { name: /principal/i })).toBeInTheDocument();
+    // O visual do herói é um loop mudo do b-roll real da oficina. Precisa ser
+    // muted para o autoplay passar na política dos navegadores.
+    const heroVideo = document.querySelector('.home-hero__visual video');
+    expect(heroVideo).toHaveAttribute(
+      'aria-label',
+      'Trabalho de precisão na bancada da oficina da Jotta'
+    );
+    expect(heroVideo).toHaveAttribute('poster', '/media/hero-oficina.jpg');
+    expect(heroVideo).toHaveProperty('muted', true);
+    expect(heroVideo).toHaveProperty('loop', true);
+    expect(screen.getByRole('link', { name: /conhecer o método/i })).toBeInTheDocument();
+    expect(
+      screen.queryByRole('form', { name: /triagem técnica rápida/i })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        level: 2,
+        name: /quatro dados. nenhuma etapa escondida/i,
+      })
+    ).toBeInTheDocument();
   });
 
   it('renders a solution page from the typed route catalog', () => {
@@ -25,7 +45,7 @@ describe('Jotta site experience', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /conjuntos hidráulicos com diagnóstico, teste e registro/i,
+        name: /vazamento é sintoma/i,
       })
     ).toBeInTheDocument();
     expect(screen.getByText('Cilindros')).toBeInTheDocument();
@@ -39,34 +59,43 @@ describe('Jotta site experience', () => {
     expect(screen.queryByText(/vale|usiminas|caixa/i)).not.toBeInTheDocument();
   });
 
-  it('advances the technical request only after valid first-step data', () => {
+  it('shows the complete technical request in one step and validates on submit', () => {
     render(<App initialPath="/contato/" />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
-    expect(screen.getAllByText('Informe este dado para continuar.').length).toBeGreaterThan(0);
+    expect(screen.getByLabelText('Nome')).toBeInTheDocument();
+    expect(screen.getByLabelText('Telefone')).toBeInTheDocument();
+    expect(screen.getByLabelText('Empresa')).toBeInTheDocument();
+    expect(screen.getByLabelText('Tipo de equipamento')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Área de atuação')).not.toBeInTheDocument();
+    expect(
+      screen.queryByLabelText('Descrição do problema ou necessidade')
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/etapa 1 de 3/i)).not.toBeInTheDocument();
 
-    fireEvent.change(screen.getByLabelText('Nome completo'), {
-      target: { value: 'Marina Lopes' },
-    });
-    fireEvent.change(screen.getByLabelText('Empresa'), {
-      target: { value: 'Indústria Horizonte' },
-    });
-    fireEvent.change(screen.getByLabelText('Cargo ou área'), {
-      target: { value: 'Engenharia' },
-    });
-    fireEvent.change(screen.getByLabelText('E-mail corporativo'), {
-      target: { value: 'marina@example.com' },
-    });
-    fireEvent.change(screen.getByLabelText('Telefone ou WhatsApp'), {
-      target: { value: '(31) 99999-0000' },
-    });
-    fireEvent.change(screen.getByLabelText('Cidade/UF ou unidade industrial'), {
-      target: { value: 'João Monlevade/MG' },
-    });
-    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    fireEvent.click(
+      screen.getByRole('button', { name: /enviar solicitação/i })
+    );
+    expect(screen.getByText('Informe seu nome completo.')).toBeInTheDocument();
+    expect(screen.getByText('Informe o tipo de equipamento.')).toBeInTheDocument();
+  });
 
-    expect(screen.getByText('Etapa 2 de 3')).toBeInTheDocument();
-    expect(screen.getByLabelText('Área de atuação')).toBeInTheDocument();
+  it('renders the premium assistance hero and the official location map', () => {
+    render(<App initialPath="/assistencia/" />);
+
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: /peça certa resolve a falha/i,
+      })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('img', {
+        name: /estrutura operacional da jotta/i,
+      })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTitle(/localização da jotta manutenções/i)
+    ).toBeInTheDocument();
   });
 
   it('renders a useful not-found state', () => {

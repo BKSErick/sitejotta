@@ -5,19 +5,8 @@ import worker from './index.js';
 const validPayload = {
   name: 'Marina Lopes',
   company: 'Indústria Horizonte',
-  role: 'Engenharia',
-  email: 'marina@example.com',
   phone: '(31) 99999-0000',
-  location: 'João Monlevade/MG',
-  discipline: 'hidraulica-industrial',
   equipment: 'Cilindro hidráulico',
-  manufacturer: '',
-  model: '',
-  needType: 'manutencao-corretiva',
-  operationalCondition: 'equipamento-parado',
-  description: 'O cilindro perdeu força e apresenta vazamento durante a operação.',
-  preferredChannel: 'whatsapp',
-  privacyAccepted: true,
   website: '',
 };
 

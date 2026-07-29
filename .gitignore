@@ -2,6 +2,7 @@ dist/
 node_modules/
 .env
 artifacts/
+Videos/
 *.tsbuildinfo
 vite.config.js
 vite.config.d.ts

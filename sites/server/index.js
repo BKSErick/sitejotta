@@ -1,31 +1,5 @@
 const MAX_BODY_BYTES = 24_000;
 const rateLimit = new Map();
-const allowedDisciplines = new Set([
-  'talhas-eletricas',
-  'lavadoras-industriais',
-  'ferrovia',
-  'mecanica-industrial',
-  'hidraulica-industrial',
-  'pneumatica-industrial',
-  'eletrica-industrial',
-  'nao-tenho-certeza',
-]);
-const allowedNeeds = new Set([
-  'manutencao-corretiva',
-  'manutencao-preventiva',
-  'diagnostico',
-  'garantia',
-  'assistencia-tecnica',
-  'homologacao-capacidade',
-  'outra',
-]);
-const allowedConditions = new Set([
-  'equipamento-parado',
-  'operacao-restrita',
-  'atendimento-planejado',
-  'em-avaliacao',
-]);
-const allowedChannels = new Set(['whatsapp', 'telefone', 'email']);
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -44,19 +18,8 @@ function normalize(input) {
   return {
     name: compact(input.name),
     company: compact(input.company),
-    role: compact(input.role),
-    email: compact(input.email).toLowerCase(),
     phone: digits(input.phone),
-    location: compact(input.location),
-    discipline: compact(input.discipline),
     equipment: compact(input.equipment),
-    manufacturer: compact(input.manufacturer),
-    model: compact(input.model),
-    needType: compact(input.needType),
-    operationalCondition: compact(input.operationalCondition),
-    description: compact(input.description),
-    preferredChannel: compact(input.preferredChannel),
-    privacyAccepted: input.privacyAccepted === true,
     website: compact(input.website),
     source: 'website',
     utmSource: compact(input.utmSource),
@@ -69,18 +32,9 @@ function isValid(input) {
   return (
     input.name.length >= 3 &&
     input.company.length >= 2 &&
-    input.role.length >= 2 &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.email) &&
     input.phone.length >= 10 &&
     input.phone.length <= 13 &&
-    input.location.length >= 3 &&
-    allowedDisciplines.has(input.discipline) &&
-    input.equipment.length >= 3 &&
-    allowedNeeds.has(input.needType) &&
-    allowedConditions.has(input.operationalCondition) &&
-    input.description.length >= 20 &&
-    allowedChannels.has(input.preferredChannel) &&
-    input.privacyAccepted
+    input.equipment.length >= 3
   );
 }
 

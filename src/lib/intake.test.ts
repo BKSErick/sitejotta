@@ -4,58 +4,35 @@ import { normalizeWebsiteRequest, validateWebsiteRequest } from './intake';
 
 const validRequest = {
   name: '  Marina Lopes  ',
-  company: ' Indústria Horizonte ',
-  role: ' Engenharia ',
-  email: ' MARINA@EXAMPLE.COM ',
   phone: ' (31) 99999-0000 ',
-  location: ' João Monlevade/MG ',
-  discipline: 'hidraulica-industrial',
+  company: ' Indústria Horizonte ',
   equipment: ' Cilindro hidráulico ',
-  manufacturer: ' Fabricante informado ',
-  model: ' CH-200 ',
-  needType: 'manutencao-corretiva',
-  operationalCondition: 'equipamento-parado',
-  description: 'O cilindro perdeu força durante a operação e apresenta vazamento.',
-  preferredChannel: 'whatsapp',
-  privacyAccepted: true,
   website: '',
 };
 
 describe('website request validation', () => {
-  it('accepts and normalizes a complete technical request', () => {
+  it('accepts and normalizes the four-field technical request', () => {
     const result = validateWebsiteRequest(validRequest);
 
     expect(result.success).toBe(true);
     expect(normalizeWebsiteRequest(validRequest)).toMatchObject({
       name: 'Marina Lopes',
-      email: 'marina@example.com',
-      company: 'Indústria Horizonte',
       phone: '31999990000',
+      company: 'Indústria Horizonte',
+      equipment: 'Cilindro hidráulico',
     });
   });
 
-  it('rejects requests without privacy consent', () => {
+  it('rejects an invalid phone and missing equipment', () => {
     const result = validateWebsiteRequest({
       ...validRequest,
-      privacyAccepted: false,
-    });
-
-    expect(result.success).toBe(false);
-    expect(result.errors.privacyAccepted).toBeDefined();
-  });
-
-  it('rejects invalid email, phone and short descriptions', () => {
-    const result = validateWebsiteRequest({
-      ...validRequest,
-      email: 'sem-arroba',
       phone: '123',
-      description: 'Falhou.',
+      equipment: '',
     });
 
     expect(result.success).toBe(false);
-    expect(result.errors.email).toBeDefined();
     expect(result.errors.phone).toBeDefined();
-    expect(result.errors.description).toBeDefined();
+    expect(result.errors.equipment).toBeDefined();
   });
 
   it('silently rejects bots that fill the honeypot', () => {

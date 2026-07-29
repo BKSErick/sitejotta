@@ -1,6 +1,7 @@
 import { SiteFooter } from './components/SiteFooter';
 import { SiteHeader } from './components/SiteHeader';
 import { findRoute, findSolution } from './data/site-content';
+import { usePageMotion } from './hooks/usePageMotion';
 import { ContactPage } from './pages/ContactPage';
 import { HomePage } from './pages/HomePage';
 import { InstitutionalPage } from './pages/InstitutionalPages';
@@ -15,6 +16,7 @@ interface AppProps {
 export default function App({ initialPath }: AppProps) {
   const pathname =
     initialPath ?? (typeof window !== 'undefined' ? window.location.pathname : '/');
+  usePageMotion(pathname);
   const route = findRoute(pathname);
 
   let page;

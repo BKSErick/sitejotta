@@ -7,7 +7,7 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ index, eyebrow, title, body }: SectionHeadingProps) {
   return (
-    <div className="section-heading">
+    <div className="section-heading" data-reveal="up">
       <span className="section-heading__index">{index}</span>
       <div>
         <span className="eyebrow">{eyebrow}</span>

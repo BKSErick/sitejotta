@@ -1,5 +1,7 @@
 import { ArrowLink } from '../components/ArrowLink';
-import { PageHero } from '../components/PageHero';
+import { BrandStrip } from '../components/BrandStrip';
+import { HomeHero } from '../components/HomeHero';
+import { RequestForm } from '../components/RequestForm';
 import { SectionHeading } from '../components/SectionHeading';
 import { SolutionGrid } from '../components/SolutionGrid';
 import type { PublicRoute } from '../data/site-content';
@@ -7,7 +9,8 @@ import type { PublicRoute } from '../data/site-content';
 const evidence = [
   ['1994', 'início da trajetória'],
   ['07', 'frentes de atuação'],
-  ['01', 'fluxo técnico rastreável'],
+  ['15', 'marcas com autorização de fábrica'],
+  ['90', 'dias de garantia no serviço'],
 ];
 
 const method = [
@@ -23,7 +26,7 @@ const method = [
 export function HomePage({ route }: { route: PublicRoute }) {
   return (
     <>
-      <PageHero route={route} marker="JM / OPERAÇÃO INDUSTRIAL" />
+      <HomeHero route={route} />
       <section className="evidence-strip" aria-label="Indicadores institucionais">
         <div className="container evidence-strip__grid">
           {evidence.map(([value, label]) => (
@@ -32,6 +35,21 @@ export function HomePage({ route }: { route: PublicRoute }) {
               <span>{label}</span>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="brand-strip" aria-labelledby="marcas-autorizadas">
+        <div className="container brand-strip__inner">
+          <div className="brand-strip__intro">
+            <span className="technical-code">ASSISTÊNCIA TÉCNICA AUTORIZADA</span>
+            <h2 id="marcas-autorizadas">
+              Autorizada por 15 fabricantes. Peça original e laudo no fim do serviço.
+            </h2>
+            <ArrowLink href="/assistencia/" variant="text">
+              Ver as assistências autorizadas
+            </ArrowLink>
+          </div>
+          <BrandStrip />
         </div>
       </section>
 
@@ -53,6 +71,42 @@ export function HomePage({ route }: { route: PublicRoute }) {
               por testes, registros e referências úteis à operação.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="section home-request-section" id="solicitacao">
+        <div className="container home-request">
+          <aside className="home-request__context">
+            <span className="technical-code">CONTATO TÉCNICO · CRM</span>
+            <h2>Quatro dados. Nenhuma etapa escondida.</h2>
+            <p>
+              A Jotta precisa apenas do essencial para iniciar a conversa e entender
+              onde a demanda começa.
+            </p>
+            <ol>
+              <li>
+                <span>01</span>
+                <strong>Nome</strong>
+              </li>
+              <li>
+                <span>02</span>
+                <strong>Telefone</strong>
+              </li>
+              <li>
+                <span>03</span>
+                <strong>Empresa</strong>
+              </li>
+              <li>
+                <span>04</span>
+                <strong>Tipo de equipamento</strong>
+              </li>
+            </ol>
+            <small>
+              A solicitação entra em triagem. Ela não abre automaticamente uma ordem
+              de serviço.
+            </small>
+          </aside>
+          <RequestForm />
         </div>
       </section>
 
@@ -122,8 +176,8 @@ export function HomePage({ route }: { route: PublicRoute }) {
           <span className="technical-code">INÍCIO DA TRIAGEM</span>
           <h2>Qual equipamento precisa de avaliação?</h2>
           <p>
-            Descreva a empresa, o equipamento e a condição operacional para orientar o
-            primeiro contato.
+            Informe seu contato, a empresa e o tipo de equipamento para iniciar a
+            conversa.
           </p>
           <ArrowLink href="/contato/">Solicitar avaliação técnica</ArrowLink>
         </div>
