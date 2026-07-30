@@ -1,4 +1,4 @@
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -49,13 +49,38 @@ function pageHead(route) {
     <meta property="og:title" content="${escapeHtml(route.meta.title)}" />
     <meta property="og:description" content="${escapeHtml(route.meta.description)}" />
     <meta property="og:url" content="${canonical}" />
-    <meta property="og:image" content="${siteUrl}/og-jotta.svg" />
+    <!--
+      PNG, não SVG: WhatsApp, Facebook e LinkedIn ignoram SVG em preview de link
+      e o card saía vazio. Gerar com: node scripts/prepare-og-image.mjs
+    -->
+    <meta property="og:image" content="${siteUrl}/og-jotta.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="${siteUrl}/og-jotta.png" />
     <script type="application/ld+json">${JSON.stringify(schema)}</script>
     <title>${escapeHtml(route.meta.title)}</title>`;
 }
 
+/**
+ * Todo caminho de asset local que o HTML pré-renderizado pede, para conferência
+ * depois. A página /conteudo/ passou a produção inteira servindo cinco imagens
+ * quebradas (/media/videos/<id>.jpg nunca existiu) porque nada comparava o que
+ * o markup referencia com o que existe em disco.
+ */
+const referencedAssets = new Map();
+
+function collectAssets(html, routePath) {
+  const pattern = /(?:src|href)="(\/[^"?#]+\.(?:jpg|jpeg|png|svg|webp|avif|mp4|webm|woff2?|pdf|ico))"/g;
+  for (const [, asset] of html.matchAll(pattern)) {
+    if (!referencedAssets.has(asset)) referencedAssets.set(asset, routePath);
+  }
+}
+
 async function writePage(route) {
   const { html } = render(route.path);
+  collectAssets(html, route.path);
   const output = template
     .replace('<!--app-head-->', pageHead(route))
     .replace('<title>Jotta Manutenções</title>', '')
@@ -82,6 +107,26 @@ const notFound = template
   .replace('<title>Jotta Manutenções</title>', '')
   .replace('<!--app-html-->', notFoundHtml);
 await writeFile(resolve(clientDir, '404.html'), notFound, 'utf8');
+
+collectAssets(notFoundHtml, '/404');
+
+const missingAssets = [];
+for (const [asset, routePath] of referencedAssets) {
+  try {
+    await access(resolve(clientDir, asset.slice(1)));
+  } catch {
+    missingAssets.push(`${asset}  (referenciado em ${routePath})`);
+  }
+}
+
+if (missingAssets.length) {
+  console.error(
+    `\nAssets referenciados que não existem em dist/client (${missingAssets.length}):`
+  );
+  missingAssets.forEach((entry) => console.error(`  ✗ ${entry}`));
+  console.error('\nSe forem thumbnails de vídeo: node scripts/prepare-video-thumbs.mjs');
+  process.exit(1);
+}
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

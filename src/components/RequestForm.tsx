@@ -1,6 +1,7 @@
 import { Send } from 'lucide-react';
-import { type FormEvent, useMemo, useRef, useState } from 'react';
+import { type FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 
+import { findSolution } from '../data/site-content';
 import {
   type WebsiteRequestErrors,
   type WebsiteRequestInput,
@@ -25,6 +26,31 @@ export function RequestForm() {
   const [errors, setErrors] = useState<WebsiteRequestErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const validation = useMemo(() => validateWebsiteRequest(data), [data]);
+
+  /**
+   * As sete páginas de solução linkam para /contato/?area=<slug>, mas ninguém
+   * lia o parâmetro: quem clicava em "talhas elétricas" caía num formulário
+   * vazio e tinha que reinformar de onde veio. Preenche o campo de equipamento
+   * com o rótulo da disciplina.
+   *
+   * Em efeito, não na renderização: ler window.location durante o render daria
+   * markup diferente do pré-renderizado e quebraria a hidratação.
+   */
+  useEffect(() => {
+    const area = new URLSearchParams(window.location.search).get('area');
+    if (!area) return;
+
+    const solution = findSolution(area);
+    if (!solution) return;
+
+    // Leitura única de fonte externa (a URL) no mount. Não pode sair da
+    // renderização: o SSR não vê a query string, e divergir do markup
+    // pré-renderizado reintroduziria a falha de hidratação. Roda uma vez só.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setData((current) =>
+      current.equipment ? current : { ...current, equipment: solution.shortName }
+    );
+  }, []);
 
   const update = (field: keyof WebsiteRequestInput, value: string) => {
     setData((current) => ({ ...current, [field]: value }));

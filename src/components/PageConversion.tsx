@@ -15,11 +15,9 @@ export function PageConversion({
 }: PageConversionProps) {
   return (
     <section className="page-conversion">
-      <div className="page-conversion__media" data-parallax="0.08" aria-hidden="true">
-        <img src="/media/jotta-oficina.jpg" alt="" width="1600" height="1067" loading="lazy" />
-      </div>
+      {/* Fundo é degradê + textura, sem foto. Ver --gradient-conversion. */}
       <div className="container page-conversion__inner">
-        <div data-reveal="up">
+        <div data-reveal-text="">
           <span className="technical-code">PRÓXIMO MOVIMENTO · TRIAGEM</span>
           <h2>{heading}</h2>
         </div>

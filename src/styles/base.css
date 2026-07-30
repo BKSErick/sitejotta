@@ -148,10 +148,6 @@ p {
   border-top: var(--line);
 }
 
-.reveal {
-  animation: rise 720ms var(--ease) both;
-}
-
 .motion-ready [data-reveal] {
   transform: translate3d(0, 2.25rem, 0);
   opacity: 0;
@@ -173,10 +169,88 @@ p {
   opacity: 1;
 }
 
-@keyframes rise {
-  from {
-    transform: translateY(1.5rem);
-    opacity: 0;
+/**
+ * Frame de armação: o estado oculto precisa ser atingido de imediato, não por
+ * transição. Dois seletores de classe vencem a regra base sem !important.
+ */
+.motion-ready.motion-arming [data-reveal],
+.motion-ready.motion-arming [data-reveal-text] > * {
+  transition-duration: 0s;
+}
+
+
+/**
+ * Texto em cascata: cada filho direto do bloco entra em sequência, em vez de o
+ * parágrafo inteiro subir de uma vez. Usado nos heroes (eyebrow → h1 → lead →
+ * ações). O atraso é por nth-child, sem custo de JS.
+ */
+.motion-ready [data-reveal-text] > * {
+  transform: translate3d(0, 1.4rem, 0);
+  opacity: 0;
+  transition:
+    transform 820ms var(--ease),
+    opacity 640ms ease;
+}
+
+.motion-ready [data-reveal-text].is-visible > * {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.motion-ready [data-reveal-text].is-visible > *:nth-child(1) {
+  transition-delay: 60ms;
+}
+
+.motion-ready [data-reveal-text].is-visible > *:nth-child(2) {
+  transition-delay: 180ms;
+}
+
+.motion-ready [data-reveal-text].is-visible > *:nth-child(3) {
+  transition-delay: 300ms;
+}
+
+.motion-ready [data-reveal-text].is-visible > *:nth-child(4) {
+  transition-delay: 420ms;
+}
+
+.motion-ready [data-reveal-text].is-visible > *:nth-child(n + 5) {
+  transition-delay: 520ms;
+}
+
+/* Animações leves e contínuas dos elementos de apoio. */
+@keyframes accent-sweep {
+  0%,
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scaleX(0.82);
+    opacity: 0.68;
+  }
+}
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -0.55rem, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready .page-hero__console::before,
+  .motion-ready .page-conversion__action::before {
+    transform-origin: left center;
+    animation: accent-sweep 5.2s var(--ease) infinite;
+  }
+
+  .motion-ready .page-hero__console.is-visible {
+    animation: soft-float 7s var(--ease) 900ms infinite;
   }
 }
 
@@ -206,18 +280,25 @@ p {
   }
 }
 
+/**
+ * 'reduce' pede menos movimento, não ausência de transição. O bloco anterior
+ * zerava transition-duration em '*' e forçava opacity: 1 nos reveals, o que
+ * eliminava qualquer entrada e saída — e ainda anulava as regras de fade
+ * declaradas acima. Agora: deslocamento e animação contínua saem, fade fica.
+ * Opacidade não provoca desconforto vestibular; translação e parallax sim.
+ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 
-  .motion-ready [data-reveal] {
+  .motion-ready [data-reveal],
+  .motion-ready [data-reveal='left'],
+  .motion-ready [data-reveal='right'],
+  .motion-ready [data-reveal-text] > * {
     transform: none !important;
-    opacity: 1 !important;
   }
 }

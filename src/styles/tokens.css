@@ -64,8 +64,30 @@
   --color-line: #cbd8df;
   --color-paper: #f4f6f5;
   --color-white: #ffffff;
-  --color-signal: #d8ff42;
+
+  /**
+   * A marca Jotta é azul, branco e preto. O verde-limão #d8ff42 que estava aqui
+   * não existe no brandbook (ver site-redesign/DESIGN_SYSTEM.md). O acento agora
+   * é o Azul Céu Jotta, que o brandbook define para linhas e áreas decorativas.
+   * Texto --color-ink sobre este tom fica em ~6.3:1 (AA).
+   */
+  --color-signal: #58a5d7;
+  --color-signal-strong: #005da0;
   --color-error: #a62b26;
+
+  /* Fundos de impacto: degradê + textura, sem depender de foto. */
+  --gradient-hero:
+    radial-gradient(120% 90% at 82% 8%, rgb(24 122 185 / 42%) 0%, transparent 58%),
+    radial-gradient(90% 70% at 6% 96%, rgb(0 61 107 / 55%) 0%, transparent 62%),
+    linear-gradient(154deg, #0a1a28 0%, #07131f 38%, #061521 66%, #04101a 100%);
+  --gradient-conversion:
+    radial-gradient(110% 85% at 88% 92%, rgb(24 122 185 / 38%) 0%, transparent 60%),
+    radial-gradient(80% 70% at 10% 6%, rgb(0 61 107 / 48%) 0%, transparent 58%),
+    linear-gradient(198deg, #061521 0%, #08192a 44%, #04101a 100%);
+  --texture-grid: 5rem;
+
+  /* Grão via SVG inline: textura sem request de imagem nem asset em public/. */
+  --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='0.38'/%3E%3C/svg%3E");
 
   --step--1: clamp(0.78rem, 0.74rem + 0.18vw, 0.9rem);
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.12rem);

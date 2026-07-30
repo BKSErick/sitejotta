@@ -79,6 +79,30 @@ describe('Jotta site experience', () => {
     expect(screen.getByText('Informe o tipo de equipamento.')).toBeInTheDocument();
   });
 
+  /**
+   * As páginas de solução linkam para /contato/?area=<slug>. O parâmetro não era
+   * lido por ninguém, então o contexto da disciplina se perdia no caminho.
+   */
+  it('prefills the equipment field from the ?area= deep link', () => {
+    window.history.replaceState({}, '', '/contato/?area=talhas-eletricas');
+
+    render(<App initialPath="/contato/" />);
+
+    expect(screen.getByLabelText('Tipo de equipamento')).toHaveValue('Talhas elétricas');
+
+    window.history.replaceState({}, '', '/');
+  });
+
+  it('leaves the equipment field empty when ?area= is unknown', () => {
+    window.history.replaceState({}, '', '/contato/?area=nao-existe');
+
+    render(<App initialPath="/contato/" />);
+
+    expect(screen.getByLabelText('Tipo de equipamento')).toHaveValue('');
+
+    window.history.replaceState({}, '', '/');
+  });
+
   it('renders the premium assistance hero and the official location map', () => {
     render(<App initialPath="/assistencia/" />);
 
@@ -88,11 +112,10 @@ describe('Jotta site experience', () => {
         name: /peça certa resolve a falha/i,
       })
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole('img', {
-        name: /estrutura operacional da jotta/i,
-      })
-    ).toBeInTheDocument();
+    // O herói não usa mais foto: o fundo é degradê + textura em CSS. Garante que
+    // nenhuma imagem voltou pra dentro dele por regressão.
+    expect(document.querySelector('.page-hero img')).toBeNull();
+    expect(document.querySelector('.page-hero__shade')).toBeInTheDocument();
     expect(
       screen.getByTitle(/localização da jotta manutenções/i)
     ).toBeInTheDocument();

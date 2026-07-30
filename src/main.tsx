@@ -16,7 +16,15 @@ const application = (
   </StrictMode>
 );
 
-if (root.hasChildNodes()) {
+/**
+ * hasChildNodes() dava true para o placeholder <!--app-html--> do index.html,
+ * porque nó de comentário conta como filho. Em dev isso chamava hydrateRoot
+ * contra um root sem markup, a hidratação falhava ("Expected server HTML to
+ * contain a matching <a> in <div>") e o React descartava tudo para
+ * re-renderizar no cliente. firstElementChild só existe quando há markup real
+ * pré-renderizado, que é a única situação em que hidratar faz sentido.
+ */
+if (root.firstElementChild) {
   hydrateRoot(root, application);
 } else {
   createRoot(root).render(application);

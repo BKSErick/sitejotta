@@ -3,6 +3,11 @@ node_modules/
 .env
 artifacts/
 Videos/
+# 'Videos/' acima pega pasta de vídeo-fonte, mas o Windows compara sem
+# diferenciar maiúscula (core.ignorecase), então engolia public/media/videos/ —
+# as thumbnails do facade de vídeo nunca entravam no commit e o build quebrava
+# no deploy. Elas são asset servido, precisam ser versionadas.
+!public/media/videos/
 *.tsbuildinfo
 vite.config.js
 vite.config.d.ts

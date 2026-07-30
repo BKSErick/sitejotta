@@ -89,14 +89,10 @@
     padding-block: var(--space-7);
   }
 
-  .page-hero__media {
-    inset: -5% -5% -5% 28%;
-  }
-
   .page-hero__shade {
     background:
-      linear-gradient(90deg, #07131f 0%, rgb(7 19 31 / 94%) 50%, rgb(7 19 31 / 48%) 100%),
-      linear-gradient(0deg, rgb(0 61 107 / 68%) 0%, transparent 48%);
+      radial-gradient(140% 100% at 50% 0%, transparent 38%, rgb(3 12 20 / 58%) 100%),
+      linear-gradient(0deg, rgb(0 61 107 / 34%) 0%, transparent 50%);
   }
 
   .home-hero {
@@ -312,15 +308,10 @@
     padding-block: var(--space-6);
   }
 
-  .page-hero__media {
-    inset: 34% -18% -8% 0;
-    opacity: 0.64;
-  }
-
   .page-hero__shade {
     background:
-      linear-gradient(180deg, #07131f 0%, #07131f 47%, rgb(7 19 31 / 72%) 100%),
-      linear-gradient(0deg, rgb(0 61 107 / 75%) 0%, transparent 52%);
+      radial-gradient(150% 100% at 50% 0%, transparent 32%, rgb(3 12 20 / 62%) 100%),
+      linear-gradient(0deg, rgb(0 61 107 / 38%) 0%, transparent 54%);
   }
 
   .page-hero__actions {

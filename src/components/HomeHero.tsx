@@ -7,7 +7,7 @@ export function HomeHero({ route }: { route: PublicRoute }) {
   return (
     <section className="home-hero">
       <div className="container home-hero__main">
-        <div className="home-hero__copy reveal">
+        <div className="home-hero__copy" data-reveal-text="">
           <span className="eyebrow">{route.eyebrow}</span>
           <h1 aria-label={route.heading}>
             <span aria-hidden="true">Manutenção industrial</span>

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { publicRoutes, solutions } from './site-content';
+import { publicRoutes, solutions, videoRecords } from './site-content';
 
 describe('site content contract', () => {
   it('contains every approved public route', () => {
@@ -44,6 +44,19 @@ describe('site content contract', () => {
     expect(new Set(titles).size).toBe(titles.length);
     expect(new Set(descriptions).size).toBe(descriptions.length);
     expect(descriptions.every((description) => description.length >= 80)).toBe(true);
+  });
+
+  /**
+   * O facade de vídeo monta a thumbnail como /media/videos/<id>.jpg, então o id
+   * precisa ser um id de YouTube válido (11 caracteres). A existência do arquivo
+   * em si é checada no build, em scripts/prerender.mjs.
+   */
+  it('uses well-formed youtube ids for every video record', () => {
+    const malformed = videoRecords
+      .map((record) => record.id)
+      .filter((id) => !/^[\w-]{11}$/.test(id));
+
+    expect(malformed).toEqual([]);
   });
 
   it('never exposes unresolved validation markers or prohibited promises', () => {
